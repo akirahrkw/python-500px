@@ -1,6 +1,7 @@
 python-500px
 ======
 A Python client for the 500px API
+inspired by tweepy(https://github.com/tweepy/tweepy), python-instagram(https://github.com/Instagram/python-instagram)
 
 Installation
 ----
@@ -39,14 +40,12 @@ Methods
   * api.photos_vote_post()
   * api.upload_photo()
   * api.photos_update()
-
   * api.users()
   * api.users_show()
   * api.users_friends()
   * api.users_followers()
   * api.users_friends_post()
   * api.users_friends_delete()
-
   * api.blogs()
   * api.blogs_id()
   * api.blogs_comments()
@@ -54,7 +53,6 @@ Methods
   * api.blogs_post()
   * api.blogs_delete()
   * api.blogs_update()
-
   * api.collections()
   * api.collections_id()
   * api.collections_post()
