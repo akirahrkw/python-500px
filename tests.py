@@ -22,11 +22,9 @@ if len(sys.argv) == 7:
 class AuthTestCase(unittest.TestCase):
     def setUp(self):
         super(AuthTestCase, self).setUp()
-        self.consumer_key       = CONSUMER_KEY
-        self.consumer_secret    = CONSUMER_SECRET
-        self.handler            = OAuthHandler(self.consumer_key,self.consumer_secret)
+        self.handler = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 
-    def _testrequesttoken(self):
+    def testrequesttoken(self):
         headers = {}
         self.handler.apply_auth('https://api.500px.com/v1/oauth/request_token', 'POST', headers, { 'oauth_callback' : 'http://localhost' })
         conn = httplib.HTTPSConnection('api.500px.com')
@@ -37,7 +35,7 @@ class AuthTestCase(unittest.TestCase):
         conn.close()
         print "this is your request token:\n%s" % result
 
-    def _testauthurlwithverifier(self):
+    def testauthurlwithverifier(self):
         redirect_uri = self.handler.get_authorization_url()
         print "Please visit and authorize at:\n%s" % redirect_uri
 
@@ -49,13 +47,28 @@ class AuthTestCase(unittest.TestCase):
         print "this is your access token:\n%s" % token.key
         print "this is your access token secret:\n%s" % token.secret
 
-    def _testxauth(self):
+    def testxauth(self):
+        print "this is your token:\n"
+        print self.handler.get_request_token()
+
+        request_token = raw_input("Input request token (blank to exit): ").strip()
+        if not request_token:
+            return
+
+        request_token_secret = raw_input("Input request token secret (blank to exit): ").strip()
+        if not request_token_secret:
+            return
+
+        self.handler.set_request_token(request_token,request_token_secret)
+
         username = raw_input("Input your username (blank to exit): ").strip()
         if not username:
             return
+
         password = raw_input("Input your password (blank to exit): ").strip()
         if not password:
             return
+
         token = self.handler.get_xauth_access_token(username,password)
 
         print "this is your access token:\n%s" % token.key

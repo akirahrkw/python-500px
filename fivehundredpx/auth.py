@@ -6,7 +6,7 @@ from fivehundredpx.errors 	import *
 
 class OAuthHandler(object):
 	
-    def __init__(self,consumer_key,consumer_secret,callback=None,secure=False):
+    def __init__(self,consumer_key,consumer_secret,callback=None,secure=True):
         self._consumer 	   = oauth.OAuthConsumer(consumer_key,consumer_secret)
         self._sigmethod    = oauth.OAuthSignatureMethod_HMAC_SHA1()
         self.request_token = None
@@ -28,7 +28,7 @@ class OAuthHandler(object):
     def set_access_token(self, key, secret):
         self.access_token = oauth.OAuthToken(key, secret)
 
-    def _get_request_token(self):
+    def get_request_token(self):
         url = self._get_oauth_url('request_token')
         request = oauth.OAuthRequest.from_consumer_and_token(self._consumer, http_url=url, callback=self.callback)
         request.sign_request(self._sigmethod,self._consumer,None)
@@ -48,7 +48,7 @@ class OAuthHandler(object):
 
     def get_authorization_url(self):
         try:
-            self.request_token = self._get_request_token()
+            self.request_token = self.get_request_token()
             request = oauth.OAuthRequest.from_token_and_callback(
                 token=self.request_token, http_url=self._get_oauth_url('authorize')
             )
@@ -74,6 +74,7 @@ class OAuthHandler(object):
             url = self._get_oauth_url('access_token',secure=True)
             request = oauth.OAuthRequest.from_consumer_and_token(
 		        oauth_consumer=self._consumer,
+                token=self.request_token,
 		        http_method='POST',
 		        http_url=url,
 		        parameters={
@@ -82,7 +83,7 @@ class OAuthHandler(object):
 		            'x_auth_password': password
 		        }
 		    )
-            request.sign_request(self._sigmethod,self._consumer,None)
+            request.sign_request(self._sigmethod,self._consumer,self.request_token)
             response = urlopen(Request(url,data=request.to_postdata()))
             self.access_token = oauth.OAuthToken.from_string(response.read())
             return self.access_token
