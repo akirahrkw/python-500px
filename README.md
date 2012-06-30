@@ -27,15 +27,11 @@ this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-in
 
 ## Authentication
  
--  ** initialize **
-
---
+- ** initialize **
     handler = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
 
 - **handler.get_authorization_url()** - get a url for authorization. **[authorize][]** 
 - **handler.get_access_token(verifier)** - get an access token. **[access_token][]**
-
---
     token = handler.get_access_token(verifier)
     print "this is your access token:\n%s" % token.key
     print "this is your access token secret:\n%s" % token.secret
