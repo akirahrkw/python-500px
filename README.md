@@ -1,18 +1,20 @@
-python-500px
-======
-A Python client for 500px API, inspired by tweepy(https://github.com/tweepy/tweepy), python-instagram(https://github.com/Instagram/python-instagram)
+# python-500px
 
-Installation
-----
-pip install python-500px
+A Python client for 500px API ( https://github.com/500px/api-documentation ).
 
-Requires
-----
+this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-instagram(https://github.com/Instagram/python-instagram)
+
+***
+
+## Installation
+    pip install python-500px
+
+## Requires
   * httplib2
   * simplejson
 
-Usage
-----
+## Usage
+
 	from fivehundredpx.client import FiveHundredPXAPI
 	from fivehundredpx.auth   import *
 	
@@ -22,9 +24,27 @@ Usage
 	handler.set_access_token(OAUTH_TOKEN,OAUTH_TOKEN_SECRET)
 	api = FiveHundredPXAPI(handler)
 	api.users()
-	
-Methods
-----
+
+## Authentication
+ 
+-  ** initialize **
+
+--
+    handler = OAuthHandler(CONSUMER_KEY,CONSUMER_SECRET)
+
+- **handler.get_authorization_url()** - get a url for authorization. **[authorize][]** 
+- **handler.get_access_token(verifier)** - get an access token. **[access_token][]**
+
+--
+    token = handler.get_access_token(verifier)
+    print "this is your access token:\n%s" % token.key
+    print "this is your access token secret:\n%s" % token.secret
+
+- **handler.get_xauth_access_token(username,password)** - get an access token by using xAuth.
+
+
+## Methods
+
   * api.photos()
   * api.photos_search()
   * api.photos_id()
@@ -59,4 +79,10 @@ Methods
   * api.collections_delete()
 
 please check test.py
+
+
+[authorize]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md
+[request_token]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md
+[access_token]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_accesstoken.md
+
 
