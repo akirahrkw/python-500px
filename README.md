@@ -79,12 +79,12 @@ this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-in
   * api.collections_delete()
 
 ## Test
-  python tests/oauth.py      [cunsumer_key] [consumer_secret]
-  python tests/blog.py       [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
-  python tests/collection.py [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
-  python tests/user.py       [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
-  python tests/photo.py      [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
-  python tests/upload.py     [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
+    python tests/oauth.py      [cunsumer_key] [consumer_secret]
+    python tests/blog.py       [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
+    python tests/collection.py [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
+    python tests/user.py       [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
+    python tests/photo.py      [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
+    python tests/upload.py     [cunsumer_key] [consumer_secret] [oauth_token] [oauth_token_secret]
 
 [authentication]: https://github.com/500px/api-documentation/tree/master/authentication
 [authorize]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md
