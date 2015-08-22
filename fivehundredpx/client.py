@@ -18,7 +18,7 @@ class FiveHundredPXAPI(object):
     #### Photo API
     # https://github.com/500px/api-documentation/tree/master/endpoints/photo
     photos 		           = bind_api(path='/photos')
-    photos_search          = bind_api(path='/photos/search', require_auth=True)
+    photos_search          = bind_api(path='/photos/search')
     photos_id 	           = bind_api(path='/photos/{id}', allowed_params=['id'])
     photos_post            = bind_api(path='/photos', method='POST', require_auth=True)
     photos_update          = bind_api(path='/photos/{id}', method='PUT', require_auth=True, as_query=False)
