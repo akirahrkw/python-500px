@@ -1,8 +1,8 @@
 # python-500px
 
-A Python client for 500px API ( https://github.com/500px/api-documentation ).
+A Python client for the [500px API](https://github.com/500px/api-documentation).
 
-this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-instagram(https://github.com/Instagram/python-instagram)
+this library was inspired by [tweepy](https://github.com/tweepy/tweepy) and [python-instagram](https://github.com/Instagram/python-instagram)
 
 ***
 
@@ -13,31 +13,36 @@ this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-in
   * simplejson
 
 ## Usage
-	from fivehundredpx.client import FiveHundredPXAPI
-	from fivehundredpx.auth   import *
 
-	unauthorized_api = FiveHundredPXAPI(handler)
-	unauthorized_api.users_show(consumer_key=CONSUMER_KEY, id='727199')
-	
-	handler = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-	handler.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
-	api = FiveHundredPXAPI(handler)
-	api.users()
+```python
+from fivehundredpx.client import FiveHundredPXAPI
+from fivehundredpx.auth   import *
+
+unauthorized_api = FiveHundredPXAPI(handler)
+unauthorized_api.users_show(consumer_key=CONSUMER_KEY, id='727199')
+
+handler = OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
+handler.set_access_token(OAUTH_TOKEN, OAUTH_TOKEN_SECRET)
+api = FiveHundredPXAPI(handler)
+api.users()
+```
 
 ## Authentication
-    please check 500px's authentication document(https://github.com/500px/api-documentation/tree/master/authentication)
-    tests/oauth.py shows how to get request/access token.
 
-    verifier:
-    self.handler.get_authorization_url() # go to this url and get verifier
-    token = self.handler.get_access_token(verifier)
-    token.key, token.secret
+Please check 500px's [authentication document](https://github.com/500px/api-documentation/tree/master/authentication). `tests/oauth.py` shows how to get request/access token.
 
-    xauth:
-    token = self.handler.get_request_token()
-    self.handler.set_request_token(token.key, token.secret)
-    token = self.handler.get_xauth_access_token(username, password)
-    token.key, token.secret
+```python
+# verifier:
+self.handler.get_authorization_url() # go to this url and get verifier
+token = self.handler.get_access_token(verifier)
+token.key, token.secret
+
+# xauth:
+token = self.handler.get_request_token()
+self.handler.set_request_token(token.key, token.secret)
+token = self.handler.get_xauth_access_token(username, password)
+token.key, token.secret
+```
 
 ## Methods
 
@@ -90,5 +95,3 @@ this library was inspired by tweepy(https://github.com/tweepy/tweepy), python-in
 [authorize]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_authorize.md
 [request_token]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_requesttoken.md
 [access_token]: https://github.com/500px/api-documentation/blob/master/authentication/POST_oauth_accesstoken.md
-
-
