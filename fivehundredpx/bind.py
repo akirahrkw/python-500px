@@ -71,9 +71,11 @@ def bind_api(**config):
 
                 if len(param_list) != 0 : url = "%s?%s" % (url, "&".join(param_list))
 
-            elif self.method == "POST" or self.method == "PUT":
+            if self.method == "POST" or self.method == "PUT":
                 if self.headers.has_key('Content-Type') == False:
                     self.headers['Content-Type'] = "application/x-www-form-urlencoded; charset=UTF-8"
+                if self.headers.has_key('Content-Length') == False:
+                    self.headers["Content-Length"] = 0
 
             postdata = None
             if self.require_auth and self.api.auth_handler:
