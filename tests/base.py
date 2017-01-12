@@ -17,9 +17,9 @@ class BaseTestCase(unittest.TestCase):
         self.api		   	    = FiveHundredPXAPI(auth_handler=self.handler)
         self.unauthorized_api   = FiveHundredPXAPI()
         self.follower_id = '925306' # test user id
-        self.user_id     = '642049' # this is akirahrkw's id
+        self.user_id     = '727199' # this is akirahrkw's id
         self.photo = None # sample photo for test
-		
+
     def tearDown(self):
         pass
 
