@@ -24,15 +24,15 @@ class FiveHundredPXAPI(object):
     photos_update          = bind_api(path='/photos/{id}', method='PUT', require_auth=True, as_query=False)
     photos_delete          = bind_api(path='/photos/{id}', method='DELETE', allowed_params=['id'],require_auth=True)
     photos_comments        = bind_api(path='/photos/{id}/comments', allowed_params=['id'])
-    photos_comments_post   = bind_api(path='/photos/{id}/comments', method='POST', allowed_params=['id'], require_auth=True)
+    photos_comments_post   = bind_api(path='/photos/{id}/comments', method='POST', allowed_params=['id'], require_auth=True, as_query=True)
     photos_favorites       = bind_api(path='/photos/{id}/favorites', allowed_params=['id'], require_auth=True)
     photos_favorite_post   = bind_api(path='/photos/{id}/favorite', method='POST', allowed_params=['id'], require_auth=True)
     photos_favorite_delete = bind_api(path='/photos/{id}/favorite', method='DELETE', allowed_params=['id'], require_auth=True)
-    photos_tags_post       = bind_api(path='/photos/{id}/tags', method='POST', allowed_params=['id'], require_auth=True)
+    photos_tags_post       = bind_api(path='/photos/{id}/tags', method='POST', allowed_params=['id'], require_auth=True, as_query=True)
     photos_tags_delete     = bind_api(path='/photos/{id}/tags', method='DELETE', allowed_params=['id'], require_auth=True, as_query=True)
     photos_votes           = bind_api(path='/photos/{id}/votes', allowed_params=['id'], require_auth=True)
     photos_vote_post       = bind_api(path='/photos/{id}/vote', method='POST', allowed_params=['id'], require_auth=True, as_query=True)
-    photos_report          = bind_api(path='/photos/{id}/report', method='POST', allowed_params=['id'], require_auth=True)
+    photos_report          = bind_api(path='/photos/{id}/report', method='POST', allowed_params=['id'], require_auth=True, as_query=True)
 
     def upload_photo(self, filename=None,fp=None,file_type=None, **kwargs):
         headers,body = FileUtil.create_body_by_filepath(filename,'file',kwargs) if fp==None else FileUtil.create_body_by_fp(fp, 'file', file_type, kwargs) 
