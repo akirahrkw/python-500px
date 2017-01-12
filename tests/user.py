@@ -40,11 +40,11 @@ class UserTestCase(BaseTestCase):
     def test_user_friends_a_get(self):
         json = self.unauthorized_api.users_friends(consumer_key=self.consumer_key, id=self.user_id, rpp=5, page=2)
         self.assertIsNotNone(json)
-        self.assertEqual(json["friends"].__class__, list)
+        self.assertEqual(json["friends"].__class__, dict)
 
         json = self.api.users_friends(require_auth=True, id=self.user_id, rpp=5, page=2)
         self.assertIsNotNone(json)
-        self.assertEqual(json["friends"].__class__, list)
+        self.assertEqual(json["friends"].__class__, dict)
 
     def test_user_friends_b_post(self):
         json = self.api.users_friends_post(require_auth=True,id=self.follower_id)
