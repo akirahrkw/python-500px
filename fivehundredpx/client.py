@@ -56,11 +56,11 @@ class FiveHundredPXAPI(object):
     blogs               = bind_api(path='/blogs')
     blogs_id            = bind_api(path='/blogs/{id}', allowed_params=['id'])
     blogs_comments      = bind_api(path='/blogs/{id}/comments', allowed_params=['id'])
-    blogs_comments_post = bind_api(path='/blogs/{id}/comments', require_auth=True, allowed_params=['id'], method='POST')
-    blogs_post          = bind_api(path='/blogs', require_auth=True, method='POST')
-    blogs_update        = bind_api(path='/blogs/{id}', require_auth=True, allowed_params=['id'], method='PUT')
-    blogs_delete        = bind_api(path='/blogs/{id}', require_auth=True, allowed_params=['id'], method='DELETE')
-    
+    # blogs_comments_post = bind_api(path='/blogs/{id}/comments', require_auth=True, allowed_params=['id'], method='POST')
+    # blogs_post          = bind_api(path='/blogs', require_auth=True, method='POST')
+    # blogs_update        = bind_api(path='/blogs/{id}', require_auth=True, allowed_params=['id'], method='PUT')
+    # blogs_delete        = bind_api(path='/blogs/{id}', require_auth=True, allowed_params=['id'], method='DELETE')
+
     #### Comment API
     # https://github.com/500px/api-documentation/tree/master/endpoints/comments
     comments_post = bind_api(path='/comments/{id}/comments', require_auth=True, allowed_params=['id'], method='POST')
