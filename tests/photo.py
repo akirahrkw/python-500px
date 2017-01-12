@@ -40,7 +40,7 @@ class PhotoTestCase(BaseTestCase):
             self.assertIsNotNone(json)
 
     def test_photos_search(self):
-        json = self.api.photos_search(term='test')
+        json = self.api.photos_search(term='test',consumer_key=self.consumer_key)
         self.assertIsNotNone(json)
 
     def test_photos_comments_post(self):
