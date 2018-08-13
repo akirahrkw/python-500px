@@ -1,5 +1,8 @@
 # python-500px
 
+### Note:
+*The client doesn't work post June 15th 2018, due to [500px shutting down access to its API](https://support.500px.com/hc/en-us/articles/360002435653-API-)*
+
 A Python client for the [500px API](https://github.com/500px/api-documentation).
 
 this library was inspired by [tweepy](https://github.com/tweepy/tweepy) and [python-instagram](https://github.com/Instagram/python-instagram)
